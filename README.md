@@ -1,9 +1,9 @@
 # SGD Regressor from Scratch
 
 This project implements **Stochastic Gradient Descent (SGD) for Linear Regression from scratch using NumPy**.  
-The objective is to understand how gradient-based optimization works internally instead of relying on prebuilt machine learning models.
+The goal is to understand how gradient-based optimization works internally instead of relying on built-in machine learning models.
 
-The implementation manually trains model parameters and evaluates performance using standard regression metrics.
+The implementation manually trains model parameters and evaluates performance using common regression metrics.
 
 ---
 
@@ -11,7 +11,7 @@ The implementation manually trains model parameters and evaluates performance us
 
 Stochastic Gradient Descent is an optimization algorithm used to minimize a loss function by updating model parameters iteratively using **one randomly selected training sample at a time**.
 
-Compared to other gradient descent methods:
+Comparison of gradient descent methods:
 
 | Method | Update Strategy |
 |------|------|
@@ -42,7 +42,7 @@ class SGDRegressor:
 
 ## Training Procedure
 
-1. Initialize model weights and bias.
+1. Initialize weights and bias.
 2. For each epoch:
    - Randomly select a training sample.
    - Compute the prediction.
@@ -54,18 +54,16 @@ class SGDRegressor:
 
 ## Prediction
 
-Predictions follow the **linear regression equation**
+Predictions follow the linear regression equation:
 
-\[
-\hat{y} = Xw + b
-\]
+y_hat = Xw + b
 
 Where:
 
-- \(X\) = feature matrix  
-- \(w\) = weight vector  
-- \(b\) = bias (intercept)  
-- \(\hat{y}\) = predicted value  
+- X = feature matrix  
+- w = weight vector  
+- b = bias (intercept)  
+- y_hat = predicted value  
 
 ---
 
@@ -75,9 +73,7 @@ Where:
 
 Average absolute difference between predicted and actual values.
 
-\[
-MAE = \frac{1}{n}\sum_{i=1}^{n} |y_i - \hat{y}_i|
-\]
+MAE = (1/n) * Σ |y_i - y_hat_i|
 
 ---
 
@@ -85,9 +81,7 @@ MAE = \frac{1}{n}\sum_{i=1}^{n} |y_i - \hat{y}_i|
 
 Average of the squared differences between predicted and actual values.
 
-\[
-MSE = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2
-\]
+MSE = (1/n) * Σ (y_i - y_hat_i)^2
 
 ---
 
@@ -95,43 +89,34 @@ MSE = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 
 Square root of the Mean Squared Error.
 
-\[
-RMSE = \sqrt{MSE}
-\]
+RMSE = sqrt(MSE)
 
 ---
 
 ## R² Score
 
-Measures how well the model explains the variance of the target variable.
+Measures how well the model explains the variance in the target variable.
 
-\[
-R^2 =
-1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
-{\sum_{i=1}^{n}(y_i - \bar{y})^2}
-\]
+R² = 1 - ( Σ (y_i - y_hat_i)^2 / Σ (y_i - y_mean)^2 )
 
 Where:
 
-- \(y_i\) = actual value  
-- \(\hat{y}_i\) = predicted value  
-- \(\bar{y}\) = mean of actual values  
+- y_i = actual value  
+- y_hat_i = predicted value  
+- y_mean = mean of actual values  
 
 ---
 
 ## Adjusted R² Score
 
-Adjusted R² accounts for the number of predictors in the model.
+Adjusted R² accounts for the number of predictors used in the model.
 
-\[
-Adjusted\ R^2 =
-1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}
-\]
+Adjusted R² = 1 - ((1 - R²) * (n - 1) / (n - k - 1))
 
 Where:
 
-- \(n\) = number of samples  
-- \(k\) = number of features  
+- n = number of samples  
+- k = number of features  
 
 ---
 
@@ -157,9 +142,7 @@ Adjusted R2 Score: 0.4512
 ---
 
 ## Technologies Used
-- Python
-- NumPy
-- scikit-learn (for evaluation metrics)
-- Python
-- NumPy
+
+- Python  
+- NumPy  
 - scikit-learn (for evaluation metrics)
