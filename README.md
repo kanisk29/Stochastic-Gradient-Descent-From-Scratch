@@ -1,31 +1,31 @@
 # SGD Regressor from Scratch
 
 This project implements **Stochastic Gradient Descent (SGD) for Linear Regression from scratch using NumPy**.  
-The goal is to understand how gradient-based optimization works internally instead of relying on prebuilt machine learning models.
+The objective is to understand how gradient-based optimization works internally instead of relying on prebuilt machine learning models.
 
-The implementation includes manual training of model parameters and evaluation using common regression metrics.
+The implementation manually trains model parameters and evaluates performance using standard regression metrics.
 
 ---
 
 ## Overview
 
-Stochastic Gradient Descent is an optimization algorithm used to minimize a loss function by updating model parameters iteratively using **one randomly selected training example at a time**.
+Stochastic Gradient Descent is an optimization algorithm used to minimize a loss function by updating model parameters iteratively using **one randomly selected training sample at a time**.
 
-Compared to standard Gradient Descent:
+Compared to other gradient descent methods:
 
 | Method | Update Strategy |
 |------|------|
-| Batch Gradient Descent | Uses entire dataset |
-| Stochastic Gradient Descent | Uses one random sample |
-| Mini-Batch Gradient Descent | Uses small batches |
+| Batch Gradient Descent | Uses the entire dataset for each update |
+| Stochastic Gradient Descent | Uses one randomly selected sample |
+| Mini-Batch Gradient Descent | Uses small batches of samples |
 
-SGD is computationally faster for large datasets and introduces noise that can help escape local minima.
+SGD is computationally efficient and often converges faster for large datasets.
 
 ---
 
 ## Implementation Details
 
-The model is implemented in a custom class:
+The model is implemented using a custom class:
 
 ```python
 class SGDRegressor:
@@ -35,18 +35,18 @@ class SGDRegressor:
 
 | Parameter | Description |
 |---|---|
-| `epochs` | Number of passes through the dataset |
-| `learning_rate` | Step size for gradient updates |
+| `epochs` | Number of training iterations over the dataset |
+| `learning_rate` | Step size used for parameter updates |
 
 ---
 
 ## Training Procedure
 
-1. Initialize weights and bias.
+1. Initialize model weights and bias.
 2. For each epoch:
-   - Randomly select a training example.
-   - Compute prediction.
-   - Compute gradients of loss with respect to parameters.
+   - Randomly select a training sample.
+   - Compute the prediction.
+   - Compute gradients of the loss function.
    - Update weights and bias using the learning rate.
 3. Repeat for the specified number of epochs.
 
@@ -54,7 +54,7 @@ class SGDRegressor:
 
 ## Prediction
 
-Predictions are computed using the linear regression equation:
+Predictions follow the **linear regression equation**
 
 \[
 \hat{y} = Xw + b
@@ -63,36 +63,35 @@ Predictions are computed using the linear regression equation:
 Where:
 
 - \(X\) = feature matrix  
-- \(w\) = model weights  
-- \(b\) = bias term  
+- \(w\) = weight vector  
+- \(b\) = bias (intercept)  
+- \(\hat{y}\) = predicted value  
 
 ---
 
-## Evaluation Metrics
+# Evaluation Metrics
 
-The model performance is evaluated using several regression metrics.
-
-### Mean Absolute Error (MAE)
+## Mean Absolute Error (MAE)
 
 Average absolute difference between predicted and actual values.
 
 \[
-MAE = \frac{1}{n}\sum |y - \hat{y}|
+MAE = \frac{1}{n}\sum_{i=1}^{n} |y_i - \hat{y}_i|
 \]
 
 ---
 
-### Mean Squared Error (MSE)
+## Mean Squared Error (MSE)
 
-Average of squared prediction errors.
+Average of the squared differences between predicted and actual values.
 
 \[
-MSE = \frac{1}{n}\sum (y - \hat{y})^2
+MSE = \frac{1}{n}\sum_{i=1}^{n} (y_i - \hat{y}_i)^2
 \]
 
 ---
 
-### Root Mean Squared Error (RMSE)
+## Root Mean Squared Error (RMSE)
 
 Square root of the Mean Squared Error.
 
@@ -102,23 +101,31 @@ RMSE = \sqrt{MSE}
 
 ---
 
-### R² Score
+## R² Score
 
-Measures how well the model explains the variance in the target variable.
+Measures how well the model explains the variance of the target variable.
 
 \[
-R^2 = 1 - \frac{SS_{res}}{SS_{tot}}
+R^2 =
+1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}
+{\sum_{i=1}^{n}(y_i - \bar{y})^2}
 \]
+
+Where:
+
+- \(y_i\) = actual value  
+- \(\hat{y}_i\) = predicted value  
+- \(\bar{y}\) = mean of actual values  
 
 ---
 
-### Adjusted R² Score
+## Adjusted R² Score
 
-Adjusted version of R² that accounts for the number of features.
+Adjusted R² accounts for the number of predictors in the model.
 
 \[
 Adjusted\ R^2 =
-1 - \frac{(1-R^2)(n-1)}{n-k-1}
+1 - \frac{(1 - R^2)(n - 1)}{n - k - 1}
 \]
 
 Where:
@@ -128,7 +135,7 @@ Where:
 
 ---
 
-## Example Results
+## Example Output
 
 ```
 Mean Absolute Error: 48.43
@@ -143,21 +150,16 @@ Adjusted R2 Score: 0.4512
 ## Key Learning Outcomes
 
 - Understanding how **Stochastic Gradient Descent works internally**
-- Implementing **linear regression optimization manually**
-- Computing **regression evaluation metrics**
-- Learning the difference between **batch, stochastic, and mini-batch gradient descent**
+- Implementing **linear regression optimization from scratch**
+- Computing common **regression evaluation metrics**
+- Learning the differences between **batch, stochastic, and mini-batch gradient descent**
 
 ---
 
 ## Technologies Used
-
 - Python
 - NumPy
 - scikit-learn (for evaluation metrics)
-
----
-
-## Author
-
-**Kanisk Dasgupta**  
-B.Tech in Artificial Intelligence & Machine Learning  
+- Python
+- NumPy
+- scikit-learn (for evaluation metrics)
