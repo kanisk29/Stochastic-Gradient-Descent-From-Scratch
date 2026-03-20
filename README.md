@@ -3,7 +3,7 @@
 This project implements **Stochastic Gradient Descent (SGD) for Linear Regression from scratch using NumPy**.  
 The goal is to understand how gradient-based optimization works internally instead of relying on built-in machine learning models.
 
-The implementation manually trains model parameters and evaluates performance using common regression metrics.
+Ghe implementation manually trains model parameters and evaluates performance using common regression metrics.
 
 ---
 
